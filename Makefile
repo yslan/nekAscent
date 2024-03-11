@@ -83,6 +83,7 @@ examples: lib install $(CEXAMPLEBINS) $(FEXAMPLEBINS)
 
 link.txt:
 	@echo $(ASCENT_LNKFLAGS) > $(BUILDROOT)/link.txt
+	@mkdir -p $(INSTALLROOT)
 	@cp $(BUILDROOT)/link.txt $(INSTALLROOT) 2>/dev/null
 
 clean:
