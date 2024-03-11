@@ -64,9 +64,9 @@ CCMD = $(CXX) $(CXXFLAGS) $(ASCENT_CXXFLAGS) $(INCFLAGS) $(ASCENT_INCFLAGS) $(PP
 FCMD = $(FC) $(FFLAGS) $(INCFLAGS)
 
 
-.PHONY: all lib install examples clean
+.PHONY: all lib install examples link.txt clean
 
-all: lib install examples
+all: lib install examples link.txt
 
 lib: $(SRCOBJS)
 	@mkdir -p $(BUILDROOT)/lib
@@ -80,6 +80,9 @@ install: lib
 	@cp $(SRCDIR)/*.hpp $(INSTALLROOT)/include 2>/dev/null
 
 examples: lib install $(CEXAMPLEBINS) $(FEXAMPLEBINS)
+
+link.txt:
+	@echo $(ASCENT_LNKFLAGS) > $(BUILDROOT)/link.txt
 
 clean:
 	@$(RM) -rf $(BUILDROOT)
